@@ -7,6 +7,7 @@ function startquiz(){
     //hide start screen
     //display question screen
 }
+
 // add time counter function
 var timeEl = document.querySelector(".time");
 var secondsLeft = 60;
@@ -15,17 +16,17 @@ function setTime() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
       timeEl.textContent = secondsLeft;
-  
+    
+      //take time away if question is ansered incorrectly
+      if (questions === 0)
+
+
       if(secondsLeft === 0) {
         clearInterval(timerInterval);
         sendMessage();
       }
-      }, 1000);
+      }, 6000);
   }
-  
-  // We start the game with a score of 0.
-  var score = 0;
-
 
 
   // Loop over every question object
@@ -35,7 +36,14 @@ function setTime() {
 
 
 
-
+  // We start the game with a score of 0.
+  var score = 0;
+  // if answer is correct
+if(userAnswer === currentQuestion.correctAnswer){
+    // add to the number of correct answers
+    numCorrect++;
 
 // Show total at end
 alert("You got " + score + "/" + questions.length);
+
+//Save user Initials and score
