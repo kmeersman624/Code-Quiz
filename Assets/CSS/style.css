@@ -1,0 +1,13 @@
+.wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+#startbtn {
+    background-color: indigo;
+    color: lightgrey;
+}
+#choices {
+    background-color: indigo;
+    color: lightgrey;
+}
