@@ -53,17 +53,25 @@ choices.addEventListener("click", function (event) {
   var element = event.target;
   if (element.matches("button") === true) {
     //Determine if answer is correct
-    console.log("Button Text: " + element.textContent);
-    console.log("Answer: " + questions[0].answer);
+    // console.log("Button Text: " + element.textContent);
+    // console.log("Answer: " + questions[0].answer);
     var answer = element.textContent.substring(3);
-    console.log(answer);
+    var outcome;
     //add to score if correct answer
     if (element.textContent.substring(3) === questions[0].answer) {
       score = score + 1;
+      outcome = "Correct!";
     }
     //take time away if question is ansered incorrectly
+    else {
+     secondsLeft = secondsLeft - 10;
+     outcome = "Incorrect!"
+    }
+    document.getElementById("outcome").innerHTML = outcome;
   }
 });
+//Move to next question
+
 // Show total at end
 function endGame() {
   // document.getElementById("endscreen");
