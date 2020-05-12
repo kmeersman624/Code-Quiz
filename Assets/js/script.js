@@ -54,8 +54,6 @@ choices.addEventListener("click", function (event) {
   var element = event.target;
   if (element.matches("button") === true) {
     //Determine if answer is correct
-    // console.log("Button Text: " + element.textContent);
-    // console.log("Answer: " + questions[0].answer);
     var answer = element.textContent.substring(3);
     var outcome;
     //add to score if correct answer
@@ -90,26 +88,22 @@ function endGame() {
 }
 
 //Save user Initials and score
-// var highscores = document.getElementById("highscores");
-// intials.addEventListener("Click", function (event) {
+var submit = document.getElementById("submit");
 
-// }
+submit.addEventListener("click", function (event) {
+  var intials = document.getElementById("initials")
+  // window.location.href = "score.html";
+})
 
-function highscores() {
-  endscreendiv.setAttribute("hidden", "true");
-  highscores.removeAttribute("hidden");
-  //get stored scores from local storage
-  var storedScores = JSON.parse(localStorage.getItem("highscores"));
-  // Render a new li for each score
-  highSList.innerHTML = "";
-  highSCountSpan.textContent = highS.length;
-  for (var i = 0; i < highS.length; i++) {
-    var highS = highS[i];
-
-    var li = document.createElement("li");
-    li.textContent = highS;
-    li.setAttribute("data-index", i);
-
-    highSList.appendChild(li);
-  }
+var highscores = localStorage.getItem("highScores");
+if(highscores) {
+  highscores = JSON.parse(highscores);
+}else {
+  highscores = [];
 }
+
+// highscores.push({
+//   initials: ""
+//   score: ","
+// });
+localStorage.setItem("highScores", JSON.stringify(highscores))
