@@ -39,7 +39,7 @@ function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = "Time: " + secondsLeft;
-
+    
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       endGame();
@@ -64,8 +64,8 @@ choices.addEventListener("click", function (event) {
     }
     //take time away if question is ansered incorrectly
     else {
-     secondsLeft = secondsLeft - 10;
-     outcome = "Incorrect!"
+      secondsLeft = secondsLeft - 10;
+      outcome = "Incorrect!"
     }
     document.getElementById("outcome").innerHTML = outcome;
   }
@@ -77,8 +77,26 @@ function endGame() {
   // document.getElementById("endscreen");
   Questionsdiv.setAttribute("hidden", "true");
   EndScreen.removeAttribute("hidden");
-  finalscore.textContent = "You got " + score + "/" + questions.length;
+  finalscore.textContent = score + "/" + questions.length;
 }
 
-// //Save user Initials and score
-// prompt(Enter Initials:)
+//Save user Initials and score
+var highscores = document.getElementById("highscores");
+function highscores() {
+  endscreendiv.setAttribute("hidden", "true");
+  highscores.removeAttribute("hidden");
+  //get stored scores from local storage
+  var storedScores = JSON.parse(localStorage.getItem("highscores"));
+    // Render a new li for each score
+    highSList.innerHTML = "";
+    highSCountSpan.textContent = highS.length;
+    for (var i = 0; i < highS.length; i++) {
+      var highS= highS[i];
+  
+      var li = document.createElement("li");
+      li.textContent = highS;
+      li.setAttribute("data-index", i);
+  
+      highSList.appendChild(li);
+    }
+}
