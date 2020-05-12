@@ -24,6 +24,7 @@ function getQuestions() {
   CurrentQuestion = questions[CurrentQuestionIndex];
   questiontitle.textContent = CurrentQuestion.title;
   // Loop over every question object
+  choices.innerHTML = "";
   for (var i = 0; i < CurrentQuestion.choice.length; i++) {
     var ChoiceBtn = document.createElement("button");
     ChoiceBtn.textContent = i + 1 + ". " + CurrentQuestion.choice[i];
@@ -39,7 +40,7 @@ function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = "Time: " + secondsLeft;
-    
+
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       endGame();
@@ -58,19 +59,27 @@ choices.addEventListener("click", function (event) {
     var answer = element.textContent.substring(3);
     var outcome;
     //add to score if correct answer
-    if (element.textContent.substring(3) === questions[0].answer) {
+    if (
+      element.textContent.substring(3) ===
+      questions[CurrentQuestionIndex].answer
+    ) {
       score = score + 1;
       outcome = "Correct!";
     }
     //take time away if question is ansered incorrectly
     else {
       secondsLeft = secondsLeft - 10;
-      outcome = "Incorrect!"
+      outcome = "Incorrect!";
     }
     document.getElementById("outcome").innerHTML = outcome;
+    CurrentQuestionIndex++;
+    if (CurrentQuestionIndex === questions.length) {
+      endGame();
+    } else {
+      getQuestions();
+    }
   }
 });
-//Move to next question
 
 // Show total at end
 function endGame() {
@@ -81,22 +90,26 @@ function endGame() {
 }
 
 //Save user Initials and score
-var highscores = document.getElementById("highscores");
+// var highscores = document.getElementById("highscores");
+// intials.addEventListener("Click", function (event) {
+
+// }
+
 function highscores() {
   endscreendiv.setAttribute("hidden", "true");
   highscores.removeAttribute("hidden");
   //get stored scores from local storage
   var storedScores = JSON.parse(localStorage.getItem("highscores"));
-    // Render a new li for each score
-    highSList.innerHTML = "";
-    highSCountSpan.textContent = highS.length;
-    for (var i = 0; i < highS.length; i++) {
-      var highS= highS[i];
-  
-      var li = document.createElement("li");
-      li.textContent = highS;
-      li.setAttribute("data-index", i);
-  
-      highSList.appendChild(li);
-    }
+  // Render a new li for each score
+  highSList.innerHTML = "";
+  highSCountSpan.textContent = highS.length;
+  for (var i = 0; i < highS.length; i++) {
+    var highS = highS[i];
+
+    var li = document.createElement("li");
+    li.textContent = highS;
+    li.setAttribute("data-index", i);
+
+    highSList.appendChild(li);
+  }
 }

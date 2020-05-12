@@ -40,7 +40,7 @@ var questions = [
     title: "What is a boolean?",
     choice: [
       "A phantom that likes to lean",
-      "I fatal mistake made in JavaScript",
+      "A fatal mistake made in JavaScript",
       "One of Tucker's pets",
       "Values that can be only one of two things: true or false",
     ],
