@@ -91,19 +91,19 @@ function endGame() {
 var submit = document.getElementById("submit");
 
 submit.addEventListener("click", function (event) {
-  var intials = document.getElementById("initials")
-  // window.location.href = "score.html";
-})
+  var intials = document.getElementById("initials");
+  window.location.href = "score.html";
+});
 
 var highscores = localStorage.getItem("highScores");
-if(highscores) {
+if (highscores) {
   highscores = JSON.parse(highscores);
-}else {
+} else {
   highscores = [];
 }
 
-// highscores.push({
-//   initials: ""
-//   score: ","
-// });
-localStorage.setItem("highScores", JSON.stringify(highscores))
+highscores.push({
+  initials: "KM",
+  score: "3/5",
+});
+localStorage.setItem("highScores", JSON.stringify(highscores));

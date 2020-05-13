@@ -12,12 +12,7 @@ var questions = [
   },
   {
     title: "Who invented JavaScript?",
-    choice: [
-      "George Washington",
-      "Donald Trump",
-      "Bill Gates",
-      "Brendan Eich",
-    ],
+    choice: ["George Washington", "Donald Trump", "Bill Gates", "Brendan Eich"],
     answer: "Brendan Eich",
   },
   {
@@ -34,7 +29,7 @@ var questions = [
       "Dreaded Object Model",
       "Date of Manufacture",
     ],
-    answer: "Documetn Object Modes",
+    answer: "Document Object Modes",
   },
   {
     title: "What is a boolean?",
@@ -44,6 +39,6 @@ var questions = [
       "One of Tucker's pets",
       "Values that can be only one of two things: true or false",
     ],
-    answer: "Values that can be only one of two things: true or false.",
+    answer: "Values that can be only one of two things: true or false",
   },
 ];
